@@ -48,9 +48,12 @@ public class ShowProfile extends EasyGraphics {
 		int y;
 		
 		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
+		throw new UnsupportedOperationException(TODO.method());	
 		
-
+		
+		
 	}
+	
+
 
 }
