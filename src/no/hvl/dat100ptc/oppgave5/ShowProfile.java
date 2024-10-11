@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public class ShowProfile extends EasyGraphics {
 
-	private static final int MARGIN = 50;		// margin on the sides 
+	private static final int MARGIN = 100;		// margin on the sides 
 	
 	private static final int MAXBARHEIGHT = 500; // assume no height above 500 meters
 	
@@ -49,17 +49,14 @@ public class ShowProfile extends EasyGraphics {
 		for (GPSPoint point:gpspoints) {
 			int hogde = (int) point.getElevation();
 			
-			if (hogde < 0) {
-				hogde = 0;
-			}
-			
 			if (hogde > MAXBARHEIGHT) {
 				hogde = MAXBARHEIGHT;
 			}
-			int y = ybase-hogde;
 			
-			drawLine(x, ybase, x, y);
+			int y = ybase-hogde;
 			setColor(0,0,255);
+			drawLine(x, ybase, x, y);
+			
 			
 			x+=3;
 			
