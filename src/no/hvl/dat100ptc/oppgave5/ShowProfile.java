@@ -56,8 +56,6 @@ public class ShowProfile extends EasyGraphics {
 			int y = ybase-hogde;
 			setColor(0,0,255);
 			drawLine(x, ybase, x, y);
-			
-			
 			x+=3;
 			
 		}
