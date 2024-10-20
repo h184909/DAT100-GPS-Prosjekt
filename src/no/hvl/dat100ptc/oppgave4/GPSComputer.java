@@ -163,16 +163,19 @@ public class GPSComputer {
 		double maxSpeed = maxSpeed() * 3.6; // Konverter til km/t
 		double averageSpeed = averageSpeed();
 
+		int hours = totalTime / 3600;
+    int minutes = (totalTime % 3600) / 60;
+    int seconds = totalTime % 60;
+
 		// Utskrift i ønsket format
 		System.out.println("==============================================");
-		System.out.printf("Total Time     : %02d:%02d:%02d\n", 
-			totalTime / 3600, (totalTime % 3600) / 60, totalTime % 60);
-		System.out.printf("Total distance : %10.2f km\n", totalDistance);
-		System.out.printf("Total elevation: %10.2f m\n", totalElevation);
-		System.out.printf("Max speed      : %10.2f km/t\n", maxSpeed);
-		System.out.printf("Average speed  : %10.2f km/t\n", averageSpeed);
-		System.out.printf("Energy         : %10.2f kcal\n", totalKcal(WEIGHT));
-		System.out.println("==============================================");
+    System.out.println("Total Time     : " + hours + "t " + minutes + "m " + seconds + "s");
+    System.out.println("Total distance : " + String.format("%.2f", totalDistance) + " km");
+    System.out.println("Total elevation: " + String.format("%.2f", totalElevation) + " m");
+    System.out.println("Max speed      : " + String.format("%.2f", maxSpeed) + " km/h");
+    System.out.println("Average speed  : " + String.format("%.2f", averageSpeed) + " km/h");
+    System.out.println("Energy         : " + String.format("%.2f", totalKcal(WEIGHT)) + " kcal");
+    System.out.println("==============================================");
 		
 	}
 
