@@ -31,13 +31,16 @@ public class GPSComputer {
 
 		double totalDistance = 0.0;
 
-		// Gå gjennom GPS-punktene og beregn distansen mellom påfølgende punkter
+		// Gå gjennom alle GPS-punktene og beregn distansen mellom påfølgende punkter
 		for (int i = 0; i < gpspoints.length - 1; i++) {
-			// Bruker GPSUtils til å beregne distanse mellom to punkter
-			totalDistance += GPSUtils.distance(gpspoints[i], gpspoints[i + 1]);
+			// Beregn distansen mellom punkt i og i+1
+			double distanceBetweenPoints = GPSUtils.distance(gpspoints[i], gpspoints[i + 1]);
+			
+			// Legg til distansen mellom de to punktene i totalDistance
+			totalDistance += distanceBetweenPoints;
 		}
 		
-		return totalDistance/1000; // Returner total distanse i km
+		return totalDistance / 1000; // Returner total distanse i kilometer
 
 	}
 
@@ -104,10 +107,11 @@ public class GPSComputer {
 
 	public double averageSpeed() {
 
-		double totalDistance = totalDistance() * 1000; // Total distance in meters
-        int totalTime = totalTime(); // Total time in seconds
+		double totalDistance = totalDistance(); // Total distance in kilometers
+    int totalTime = totalTime(); // Total time in seconds
 
-        return (totalTime > 0) ? (totalDistance / totalTime) * 3.6 : 0; // Konverter til km/t
+    // Beregn gjennomsnittshastighet i km/t, returner 0 hvis total tid er 0
+    return (totalTime > 0) ? (totalDistance / totalTime) * 3600 : 0;
 	}
 
 
