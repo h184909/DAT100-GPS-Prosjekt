@@ -41,8 +41,25 @@ public class ShowSpeed extends EasyGraphics {
 		
 		int x = MARGIN,y;
 	
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
-		
+		 double[] speeds = gpscomputer.speeds(); // Hastigheter mellom punktene i km/t
+		    double averageSpeed = gpscomputer.averageSpeed(); // Gjennomsnittshastighet i km/t
+
+		    // Skaleringsfaktorer for å tilpasse stolpene til vinduet
+		    int maxBarHeight = BARHEIGHT; // Maksimal høyde på stolpene i piksler
+		    double maxSpeed = GPSUtils.findMax(speeds); // Finn maks hastighet for å skalere stolpene
+
+		    // Tegn hastighetene som blå stolper
+		    setColor(0, 0, 255); // Blå farge for hastighetsstolpene
+		    for (int i = 0; i < speeds.length; i++) {
+		        int barHeight = (int) ((speeds[i] / maxSpeed) * maxBarHeight); // Skaler høyden på stolpen
+		        x = MARGIN + i * 2; // X-posisjon (stolpebredde = 2 piksler)
+		        y = ybase - barHeight; // Y-posisjon basert på hastigheten
+		        drawLine(x, ybase, x, y); // Tegn vertikale stolper
+		    }
+
+		    // Tegn gjennomsnittshastigheten som en grønn linje
+		    setColor(0, 255, 0); // Grønn farge for gjennomsnittshastigheten
+		    int avgYPos = ybase - (int) ((averageSpeed / maxSpeed) * maxBarHeight); // Beregn Y-posisjonen for gjennomsnittshastigheten
+		    drawLine(MARGIN, avgYPos, MARGIN + speeds.length * 2, avgYPos); 
 	}
 }
