@@ -40,7 +40,7 @@ public class GPSComputer {
 			totalDistance += distanceBetweenPoints;
 		}
 		
-		return totalDistance / 1000; // Returner total distanse i kilometer
+		return totalDistance; // Returner total distanse i kilometer
 
 	}
 
@@ -107,11 +107,7 @@ public class GPSComputer {
 
 	public double averageSpeed() {
 
-		double totalDistance = totalDistance(); // Total distance in kilometers
-    int totalTime = totalTime(); // Total time in seconds
-
-    // Beregn gjennomsnittshastighet i km/t, returner 0 hvis total tid er 0
-    return (totalTime > 0) ? (totalDistance / totalTime) * 3600 : 0;
+    return (totalDistance() / totalTime());
 	}
 
 
